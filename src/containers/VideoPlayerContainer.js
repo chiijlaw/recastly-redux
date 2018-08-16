@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import VideoPlayer from '../components/VideoPlayer.js';
 
-var VideoPlayerContainer = () => {};
 
 //TODO: define a VideoPlayerContainer component which will hook up your action
 //dispatchers with your VideoPlayer component props.
@@ -13,13 +12,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-      return {
-      handleVideoListEntryTitleClick: function() {
-          dispatch({});
-      }
-    }
-};
+const mapDispatchToProps = (dispatch) => { return {}; };
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayerContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);

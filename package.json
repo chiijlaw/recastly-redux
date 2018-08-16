@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "test": "live-server --open=./SpecRunner.html --port=8081",
-    "start": "live-server --open=./index.html --port=8080 | live-server --open=./SpecRunner.html --port=8081 | webpack -d --watch",
+    "start": "live-server --open=./index.html --port=8080 | live-server --open=./SpecRunner.html --port=8081 | webpack -d --watch | babel . -watch --out-dir compiled --presets=env,react --ignore=node_modules,compiled --source-maps inline",
     "compile": "webpack -d --watch"
   },
   "dependencies": {

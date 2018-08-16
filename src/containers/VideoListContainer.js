@@ -16,10 +16,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
       return {
-      handleVideoListEntryTitleClick: function() {
-          dispatch({});
+      handleVideoListEntryTitleClick: function(video) {
+          dispatch(changeVideo(video));
       }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(VideoListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(VideoList);

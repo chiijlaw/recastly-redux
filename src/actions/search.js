@@ -9,24 +9,16 @@ var handleVideoSearch = (q) => {
 //TODO:  Write an asynchronous action to handle a video search!
 
 var apiObject = {
-  key: 'AIzaSyDHEkDi9amTopThEpVn_mih0NS-GnfuDUo',
-  query: 'blah',
+  key: YOUTUBE_API_KEY,
+  query: q,
   max: 5
 }
 
 // Dispatch ChangeVideoList and ChangeVideo
 return function(dispatch) {
   searchYouTube(apiObject, function(data) {
-    var changeVideoResult;
-    var changeVideoListResult;
-    // Call changeVideo
-    changeVideoResult = changeVideo(data[0]);
-
-    // Call changeVideoList
-    changeVideoListResult = changeVideoList(data);
-    console.log(changeVideoListResult)
-    
-    dispatch(changeVideoListResult);
+    dispatch(changeVideoList(data));
+    dispatch(changeVideo(data[0]));
   });
 }
 

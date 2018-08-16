@@ -8,64 +8,35 @@ import changeVideo from '../actions/currentVideo.js';
 import changeVideoList from '../actions/videoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import store from '../store/store.js';
+import { connect } from 'react-redux';
 
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
-
-    // Move to store
-    // this.state = {
-    //   videos: [],
-    //   currentVideo: null
-    // };
   }
 
   componentDidMount() {
-    this.getYouTubeVideos('react tutorials');
+    store.dispatch(changeVideoList(exampleVideoData));
+    store.dispatch(changeVideo(exampleVideoData[0]))
   }
-
-  handleVideoListEntryTitleClick(video) {
-    // May have to make a dispatch call here to the store
-    this.setState({currentVideo: video});
-  }
-
-  getYouTubeVideos(query) {
-    var options = {
-      key: this.props.API_KEY,
-      query: query
-    };
-
-    this.props.searchYouTube(options, (videos) =>
-    // Send dispatcher 
-      this.props.handleVideoSearch(q)
-    );
-  }
-
+  
   //TODO: swap out the React components below for the container components
   //  you wrote in the 'containers' directory.
+  // delete props from react components
   render() {
     return (
       <div>
-        <Nav handleSearchInputChange={this.getYouTubeVideos.bind(this)}/>
+        <Nav />
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={this.state.currentVideo}/>
+            <VideoPlayerContainer />
           </div>
           <div className="col-md-5">
-            <VideoList
-              handleVideoListEntryTitleClick={this.handleVideoListEntryTitleClick.bind(this)}
-              videos={this.state.videos}
-            />
+            <VideoListContainer />
           </div>
         </div>
       </div>
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-
-});
-
-export default connect(mapStateToProps)(App);

@@ -33,8 +33,11 @@ class SearchContainer extends React.Component {
 //HINT: use react-redux 'connect' method to generate a container component from
 //state and dispatch mappings.
 
-const mapStateToProps = (state) => ({
-    
-});
+const mapStateToProps = (state) => {
+    // let props = {
+    //     handleSearchInputChange: state.handleSearchInputChange
+    // };
+    return state
+};
 
-export default connect(mapStateToProps)(SearchContainer);
+export default connect(mapStateToProps)(Search);

@@ -38,7 +38,7 @@ class App extends React.Component {
 
     this.props.searchYouTube(options, (videos) =>
     // Send dispatcher 
-      this.props.dispatch(handleVideoSearch)
+      this.props.handleVideoSearch(q)
     );
   }
 

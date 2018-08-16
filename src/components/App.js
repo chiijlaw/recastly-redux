@@ -9,14 +9,16 @@ import changeVideoList from '../actions/videoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import store from '../store/store.js';
 
-export default class App extends React.Component {
+
+class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      videos: [],
-      currentVideo: null
-    };
+    // Move to store
+    // this.state = {
+    //   videos: [],
+    //   currentVideo: null
+    // };
   }
 
   componentDidMount() {
@@ -24,6 +26,7 @@ export default class App extends React.Component {
   }
 
   handleVideoListEntryTitleClick(video) {
+    // May have to make a dispatch call here to the store
     this.setState({currentVideo: video});
   }
 
@@ -34,10 +37,8 @@ export default class App extends React.Component {
     };
 
     this.props.searchYouTube(options, (videos) =>
-      this.setState({
-        videos: videos,
-        currentVideo: videos[0]
-      })
+    // Send dispatcher 
+      this.props.dispatch(handleVideoSearch)
     );
   }
 
@@ -62,3 +63,9 @@ export default class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+
+});
+
+export default connect(mapStateToProps)(App);
